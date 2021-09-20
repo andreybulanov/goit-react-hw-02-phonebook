@@ -24,6 +24,12 @@ export class App extends Component {
     const { contacts } = this.state;
     const newContact = { id: uuidv4(), name, number };
 
+    contacts.some(contact => contact.number === newContact.number)
+      ? alert(`${newContact.number} is already in contacts`)
+      : this.setState({
+          contacts: [newContact, ...contacts],
+        });
+
     contacts.some(contact => contact.name === newContact.name)
       ? alert(`${newContact.name} is already in contacts`)
       : this.setState({
